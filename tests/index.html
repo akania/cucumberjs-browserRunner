@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cucumber.js browser runner tests</title>
+    <link href="../lib/runner.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../lib/vendor/cucumber.js"></script>
+    <script type="text/javascript" src="../lib/vendor/jquery-1.9.1.min.js"></script>
+
+    <script type="text/javascript" src="../lib/runner.js"></script>
+  </head>
+  <body>
+
+
+    <h2>Output</h2>
+    <div id="output" class="cucumber-report"></div>
+    <div id="errors-container">
+      <h3>Errors</h3>
+      <pre id="errors"></pre>
+    </div>
+
+
+    <script>
+        var runner = new CucumberJsBrowserRunner();
+        runner.loadFeature('loadFeature', function (features) {
+            console.log('succcess');
+            runner.run('loadFeature');
+        });
+    </script>
+    
+    
+  </body>
+</html>

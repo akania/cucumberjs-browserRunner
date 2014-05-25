@@ -19,5 +19,11 @@
       <h3>Errors</h3>
       <pre id="errors"></pre>
     </div>
+
+    <script>
+        CucumberJsBrowserRunner.loadFeatures('test', function (features) {
+            features.runAll();
+        });
+    </script>
   </body>
 </html>
