@@ -1,22 +1,18 @@
 CucumberJsBrowserRunnerStepDefinitions.testWorld(function () {
   
-  var And = Given = When = Then = this.defineStep;
+  var And = Given = When = Then = this.defineStep,
+      World = this.World;
 
   this.World = function(callback) {
-    callback();
-      jQuery.ajax({
-          url: 'features/support/testWorld.js',
-          dataType: "script",
-          success: function () {
-              this.World = testWorld;
-          },
-          error : function () {
-              console.error('unable to load world');
-          }
+      alert(1);
+      CucumberJsBrowserRunner.loadWorld('testWorld', function (world) {
+          console.log('my world', world);
+          callback(world);
       });
   };
 
   this.Before(function(callback) {
-      alert(1);
+      console.log(this.World)
+      callback();
   });
 });

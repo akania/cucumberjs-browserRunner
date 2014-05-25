@@ -20,3 +20,4 @@ Feature: Loading feature files
     When I load a feature 'testWorld'
     And I run feature 'testWorld'
     Then i can access world instance for this feature
+  
