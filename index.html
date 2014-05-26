@@ -11,19 +11,28 @@
     <script type="text/javascript" src="/runner.js"></script>
   </head>
   <body>
-    
-    <h2>Output</h2>
-    <p><button id="run-feature">Run feature</button></p>
-    <div id="output" class="cucumber-report"></div>
-    <div id="errors-container">
-      <h3>Errors</h3>
-      <pre id="errors"></pre>
-    </div>
 
-    <script>
-        CucumberJsBrowserRunner.loadFeatures('test', function (features) {
-            features.runAll();
-        });
-    </script>
+    <h2> Go to <a href="tests">tests</a> to see it in action</h2>
+    <h3>Example how to run setup runner</h3>
+    <textarea rows="20" cols="80">
+
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+          <title>Cucumber.js browser runner</title>
+          <link href="runner.css" rel="stylesheet" type="text/css"/>
+          <script type="text/javascript" src="/cucumber.js"></script>
+          <script type="text/javascript" src="vendor/jquery-1.9.1.min.js"></script>
+
+          <script type="text/javascript" src="/runner.js"></script>
+          <script>
+              var runner = new CucumberJsBrowserRunner();
+              runner.loadFeatures(['loadFeature'], function (features) {
+                  runner.run('loadFeature');
+              });
+          </script>
+          .....
+    </textarea>
   </body>
 </html>
