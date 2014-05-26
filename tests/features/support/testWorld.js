@@ -1,4 +1,5 @@
-testWorld = {
-    test : 1,
-    init : function () {}
-}
+CucumberJsBrowserRunnerWorldDefinitions.testWorld(function() {
+    return {
+        testProperty : 123
+    }
+});

@@ -23,12 +23,9 @@
 
     <script>
         var runner = new CucumberJsBrowserRunner();
-        runner.loadFeature('loadFeature', function (features) {
-            console.log('succcess');
+        runner.loadFeatures(['loadFeature'], function (features) {
             runner.run('loadFeature');
         });
     </script>
-    
-    
   </body>
 </html>
