@@ -22,10 +22,9 @@
 
 
     <script>
-        var runner = new CucumberJsBrowserRunner();
-        runner.loadFeatures(['loadFeature', 'testFeature', 'reportFeature'], function (features) {
-        //runner.loadFeatures(['test1', 'test2'], function (features) {
-            runner.run();
+        var globalRunner = new CucumberJsBrowserRunner();
+        globalRunner.loadFeatures(['loadFeature', 'testFeature', 'reportFeature'], function () {
+            globalRunner.run();
         });
     </script>
   </body>
