@@ -5,7 +5,7 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
     featureCode = {},
     runner;
 
-  this.Before(function(callback) {
+  this.Before(function(beforething, callback) {
     runner = new CucumberJsBrowserRunner();
     callback();
   });
@@ -29,7 +29,6 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
       }, callback.fail);
   });
 
-
   Then(/^i can verify that definition for feature '(\w+)' contains '(.*)'$/, function(featureName, featureCodeFragment, callback) {
       if (featureCode[featureName].indexOf(featureCodeFragment) > -1 ) {
           callback.fail();
@@ -38,10 +37,21 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
       }
   });
 
+  Then(/^I fail the test$/, function(callback) {
+      callback.fail();
+  });
+
   Then(/^i can access world instance for this feature$/, function(callback) {
       callback();
   });
 
+  Then(/^i can see in report that feature test '(\w+)'$/, function(status, callback) {
+      if (status === runner.getReport().features[0].status) {
+          callback();
+      } else {
+          callback.fail();
+      }
+  });
 
   And(/^step definition file is loaded for feature '(\w+)'$/, function (feature, callback) {
       if (CucumberJsBrowserRunnerStepDefinitions[feature]) {
@@ -61,4 +71,10 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
           }
       });
   });
+
+  And(/^I run all features$/, function (feature, callback) {
+      runner.setOutput('console');
+      runner.run();
+  });
+
 });
