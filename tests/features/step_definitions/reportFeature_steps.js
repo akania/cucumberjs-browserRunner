@@ -23,7 +23,14 @@ CucumberJsBrowserRunnerStepDefinitions.reportFeature(function () {
 
     And(/^I run feature '(\w+)'$/, function (feature, callback) {
         runner.setOutput('console');
-        runner.run(feature);
+        runner.run(feature, {
+              StepResult : function (stepResult) {
+                  console.log('step results')
+                  if (stepResult.getStep().getName() === 'c' && stepResult.isSuccessful()) {
+                      callback();
+                  }
+              }
+          });
     });
     
     Then(/^i can see in report that feature test '(\w+)'$/, function(status, callback) {

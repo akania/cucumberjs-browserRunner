@@ -65,6 +65,7 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
       runner.setOutput('console');
       runner.run(feature, {
           StepResult : function (stepResult) {
+              console.log('step results')
               if (stepResult.getStep().getName() === 'c' && stepResult.isSuccessful()) {
                   callback();
               }
