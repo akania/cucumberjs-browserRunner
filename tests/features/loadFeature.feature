@@ -5,9 +5,9 @@ Feature: Loading feature files
 
   Scenario: load one feature file and step file for feature
     Given a web page
-    When I load a feature 'loadFeature'
-    Then i can verify that definition for feature 'loadFeature' contains 'Loading feature files'
-    And step definition file is loaded for feature 'loadFeature'
+    When I load a feature 'test1'
+    Then i can verify that definition for feature 'test1' contains 'Test feature'
+    And step definition file is loaded for feature 'test1'
 
   Scenario: load two feature files and step file for feature
     Given a web page
@@ -19,7 +19,7 @@ Feature: Loading feature files
     Given a web page
     When I load a feature 'test1' and 'test2'
     And I run all features
-    Then i can see results for all tests
+    Then i can check results for all tests
 
   Scenario: load one feature file, step file for feature and world instance for this feature
     Given a web page

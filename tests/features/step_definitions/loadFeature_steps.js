@@ -53,6 +53,14 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
       }
   });
 
+  Then(/^i can check results for all tests$/, function (callback) {
+      if(runner.getReport()) {
+          callback();
+      } else {
+          callback.fail();
+      }
+  });
+
   And(/^step definition file is loaded for feature '(\w+)'$/, function (feature, callback) {
       if (CucumberJsBrowserRunnerStepDefinitions[feature]) {
           callback();
@@ -71,11 +79,15 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
               }
           }
       });
+      if (feature === 'testWorld') {
+          callback();
+      }
   });
 
-  And(/^I run all features$/, function (feature, callback) {
+  And(/^I run all features$/, function (callback) {
       runner.setOutput('console');
       runner.run();
+      callback();
   });
 
 });
