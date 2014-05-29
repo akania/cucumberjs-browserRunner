@@ -3,10 +3,11 @@ CucumberJsBrowserRunnerStepDefinitions.reportFeature(function () {
     var And = Given = When = Then = this.defineStep,
         featureName = '',
         featureCode = {},
-        runner;
+        featureRunner,
+        stepRunner
 
     this.Before(function(beforething, callback) {
-        runner = new CucumberJsBrowserRunner();
+        featureRunner = new CucumberJsBrowserRunner();
         callback();
     });
 
@@ -15,28 +16,33 @@ CucumberJsBrowserRunnerStepDefinitions.reportFeature(function () {
     });
 
     When(/^I load a feature '(\w+)'$/, function(feature, callback) {
-        runner.loadFeatures(feature, function (runner) {
+        featureRunner.loadFeatures(feature, function () {
             featureCode[feature] = feature;
             callback();
         }, callback.fail);
     });
 
     And(/^I run feature '(\w+)'$/, function (feature, callback) {
-        runner.setOutput('console');
-        runner.run(feature, {
-              StepResult : function (stepResult) {
-                  if (stepResult.getStep().getName() === 'c' && stepResult.isSuccessful()) {
-                      callback();
-                  }
-              }
-          });
+        featureRunner.setOutput('console');
+        featureRunner.run(feature);
+        callback();
     });
 
-    Then(/^i can see in report that feature test '(\w+)'$/, function(status, callback) {
-        if (status === runner.getReport().features[0].status) {
+    Then(/^i can check report summary with '(\w+)' status$/, function(status, callback) {
+        console.log('status should be ', status, featureRunner.getReport().getSummary())
+        if (featureRunner.getReport().getSummary() === status) {
             callback();
         } else {
             callback.fail();
         }
     });
+
+    Then(/^i can check that feature with name '(\w+)' failed$/, function(featureName, callback) {
+        if (featureRunner.getReport().getFailed()[0].name === featureName) {
+            callback();
+        } else {
+            callback.fail();
+        }
+    });
+     
 });

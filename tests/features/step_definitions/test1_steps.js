@@ -1,6 +1,7 @@
 CucumberJsBrowserRunnerStepDefinitions.test1(function () {
 
-    var And = Given = When = Then = this.defineStep;
+    var And = Given = When = Then = this.defineStep,
+        runner;
 
     this.Before(function(beforething, callback) {
         runner = new CucumberJsBrowserRunner();
@@ -21,7 +22,7 @@ CucumberJsBrowserRunnerStepDefinitions.test1(function () {
     });
 
     When(/^I load a feature '(\w+)'$/, function(feature, callback) {
-        runner.loadFeatures(feature, function (runner) {
+        runner.loadFeatures(feature, function () {
             callback();
         }, callback.fail);
     });

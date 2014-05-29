@@ -1,6 +1,7 @@
 CucumberJsBrowserRunnerStepDefinitions.test2(function () {
 
-    var And = Given = When = Then = this.defineStep;
+    var And = Given = When = Then = this.defineStep,
+        runner;
 
     this.Before(function(beforething, callback) {
         this.test1property = 2;
@@ -20,7 +21,7 @@ CucumberJsBrowserRunnerStepDefinitions.test2(function () {
     });
 
     When(/^i do nothing$/, function(feature, callback) {
-        runner.loadFeatures(feature, function (runner) {
+        runner.loadFeatures(feature, function () {
             callback();
         }, callback.fail);
     });

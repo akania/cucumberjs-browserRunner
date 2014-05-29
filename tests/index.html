@@ -23,7 +23,8 @@
 
     <script>
         var globalRunner = new CucumberJsBrowserRunner();
-        globalRunner.loadFeatures(['loadFeature', 'testFeature', 'reportFeature'], function () {
+        //globalRunner.loadFeatures(['loadFeature', 'testFeature', 'reportFeature'], function () {
+          globalRunner.loadFeatures(['reportFeature'], function () {
             globalRunner.run();
         });
     </script>
