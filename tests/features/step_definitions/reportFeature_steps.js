@@ -32,7 +32,7 @@ CucumberJsBrowserRunnerStepDefinitions.reportFeature(function () {
               }
           });
     });
-    
+
     Then(/^i can see in report that feature test '(\w+)'$/, function(status, callback) {
         if (status === runner.getReport().features[0].status) {
             callback();

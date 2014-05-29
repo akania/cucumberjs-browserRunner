@@ -13,3 +13,4 @@ DONE :
 
 TODO :
 - step definitions ( code ) can be reused by multiple features
+- expose api for using different kind of formatters ( JSON, Summary, Pretty...)
