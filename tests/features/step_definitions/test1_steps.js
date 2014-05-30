@@ -29,6 +29,8 @@ CucumberJsBrowserRunnerStepDefinitions.test1(function () {
 
     And(/^I run all features$/, function (feature, callback) {
         runner.setOutput('console');
-        runner.run();
+        runner.run({
+            callback : callback
+        });
     });
 });

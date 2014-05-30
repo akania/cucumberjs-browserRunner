@@ -3,7 +3,7 @@ Feature: Loading feature files
   As a developer
   I want to be able to use runner to load a feature(s) file and run the test(s)
 
-  Scenario: load one feature file and step file for feature
+  Scenario: load one feature file and step definition file for that feature
     Given a web page
     When I load a feature 'test1'
     Then i can verify that definition for feature 'test1' contains 'Test feature'

@@ -71,12 +71,16 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
 
   And(/^I run feature '(\w+)'$/, function (feature, callback) {
       runner.setOutput('console');
-      runner.run(feature, {
-          StepResult : function (stepResult) {
-              if (stepResult.getStep().getName() === 'c' && stepResult.isSuccessful()) {
-                  callback();
-              }
-          }
+      runner.run({
+          featureName : feature,
+          customListeners : {
+            StepResult : function (stepResult) {
+                if (stepResult.getStep().getName() === 'c' && stepResult.isSuccessful()) {
+                    callback();
+                }
+            }
+          },
+          callback : callback
       });
       if (feature === 'testWorld') {
           callback();
@@ -85,7 +89,7 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
 
   And(/^I run all features$/, function (callback) {
       runner.setOutput('console');
-      runner.run();
+      runner.run({callback : callback});
       callback();
   });
 

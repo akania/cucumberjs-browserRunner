@@ -23,9 +23,13 @@
 
     <script>
         var globalRunner = new CucumberJsBrowserRunner();
-        //globalRunner.loadFeatures(['loadFeature', 'testFeature', 'reportFeature'], function () {
-          globalRunner.loadFeatures(['reportFeature'], function () {
-            globalRunner.run();
+          globalRunner.loadFeatures(['loadFeature', 'testFeature', 'reportFeature'], function () {
+          //globalRunner.loadFeatures(['reportFeature'], function () {
+            globalRunner.run({
+              callback : function () {
+                console.log('summar', globalRunner.getReport().getSummary());
+              }
+            });
         });
     </script>
   </body>
