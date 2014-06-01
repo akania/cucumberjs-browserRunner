@@ -15,14 +15,16 @@ Feature: Loading feature files
     Then i can verify that definition for feature 'test1' contains 'test1'
     And i can verify that definition for feature 'test2' contains 'test2'
 
-  Scenario: load two feature files and step file for feature, run all featuress
+  Scenario: try to load a feature which is not defined
     Given a web page
-    When I load a feature 'test1' and 'test2'
-    And I run all features
-    Then i can check results for all tests
+    When I load a feature 'featureThatDoesntExist'
+    Then I get the information that 'featureThatDoesntExist' feature was not loaded
 
-  Scenario: load one feature file, step file for feature and world instance for this feature
+  Scenario: try to load a feature with no step definition
     Given a web page
-    When I load a feature 'testWorld'
-    And I run feature 'testWorld'
-    Then i can access world instance for this feature
+    When I load a feature 'featureWithoutStep'
+    Then I get the information that for 'featureWithoutStep' feature step definition was not loaded
+
+
+
+

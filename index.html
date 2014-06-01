@@ -28,8 +28,13 @@
           <script type="text/javascript" src="/runner.js"></script>
           <script>
               var runner = new CucumberJsBrowserRunner();
-              runner.loadFeatures(['loadFeature'], function (features) {
-                  runner.run('loadFeature');
+              runner.loadFeatures(['loadFeature', 'runFeatures', 'reportFeature', 'tags'], function () {
+                  runner.run({
+                      callback : function () {
+                          console.log('summary', runner.getReport().getSummary());
+                      }
+                  });
+                  console.log('loaded', runner.getReport().getSummary());
               });
           </script>
           .....
