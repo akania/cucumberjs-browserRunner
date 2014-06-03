@@ -1,4 +1,4 @@
-CucumberJsBrowserRunnerStepDefinitions.runFeatures(function () {
+CucumberJsBrowserRunner.StepDefinitions.runFeatures(function () {
 
     var And = Given = When = Then = this.defineStep,
         featureName = '',
@@ -25,7 +25,6 @@ CucumberJsBrowserRunnerStepDefinitions.runFeatures(function () {
         });
     });
 
-    
     When(/^I load a feature '(\w+)' and '(\w+)'$/, function(feature1, feature2, callback) {
         var testRunner = this.runner;
         testRunner.loadFeatures([feature1, feature2], function (runner) {
@@ -40,7 +39,7 @@ CucumberJsBrowserRunnerStepDefinitions.runFeatures(function () {
     });
 
     And(/^step definition file is loaded for feature '(\w+)'$/, function (feature, callback) {
-        if (CucumberJsBrowserRunnerStepDefinitions[feature]) {
+        if (CucumberJsBrowserRunner.StepDefinitions[feature]) {
             callback();
         } else {
             callback.fail();
@@ -67,7 +66,6 @@ CucumberJsBrowserRunnerStepDefinitions.runFeatures(function () {
             callback.fail();
         }
     });
-    
 
     Then(/^I can run all features$/, function (callback) {
         this.runner.setOutput('console');

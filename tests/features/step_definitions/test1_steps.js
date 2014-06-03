@@ -1,4 +1,4 @@
-CucumberJsBrowserRunnerStepDefinitions.test1(function () {
+CucumberJsBrowserRunner.StepDefinitions.test1(function () {
 
     var And = Given = When = Then = this.defineStep,
         runner;

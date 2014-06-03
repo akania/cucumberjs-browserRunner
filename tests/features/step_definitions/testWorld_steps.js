@@ -1,4 +1,4 @@
-CucumberJsBrowserRunnerStepDefinitions.testWorld(function () {
+CucumberJsBrowserRunner.StepDefinitions.testWorld(function () {
 
   var And = Given = When = Then = this.defineStep,
       World = this.World;

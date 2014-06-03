@@ -1,4 +1,4 @@
-CucumberJsBrowserRunnerStepDefinitions.tags(function () {
+CucumberJsBrowserRunner.StepDefinitions.tags(function () {
 
     var And = Given = When = Then = this.defineStep,
         featureName = '',

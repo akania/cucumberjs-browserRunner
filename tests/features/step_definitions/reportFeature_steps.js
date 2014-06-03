@@ -1,4 +1,4 @@
-CucumberJsBrowserRunnerStepDefinitions.reportFeature(function () {
+CucumberJsBrowserRunner.StepDefinitions.reportFeature(function () {
 
     var And = Given = When = Then = this.defineStep,
         featureName = '',

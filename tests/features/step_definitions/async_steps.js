@@ -1,4 +1,4 @@
-CucumberJsBrowserRunnerStepDefinitions.async(function () {
+CucumberJsBrowserRunner.StepDefinitions.async(function () {
 
     var And = Given = When = Then = this.defineStep;
     var value = 1;

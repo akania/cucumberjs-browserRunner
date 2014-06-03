@@ -1,4 +1,4 @@
-CucumberJsBrowserRunnerStepDefinitions.failingFeature(function () {
+CucumberJsBrowserRunner.StepDefinitions.failingFeature(function () {
 
   var And = Given = When = Then = this.defineStep;
 

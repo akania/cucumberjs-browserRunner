@@ -1,4 +1,4 @@
-CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
+CucumberJsBrowserRunner.StepDefinitions.loadFeature(function () {
 
     var And = Given = When = Then = this.defineStep,
         featureName = '',
@@ -96,7 +96,7 @@ CucumberJsBrowserRunnerStepDefinitions.loadFeature(function () {
     });
 
     And(/^step definition file is loaded for feature '(\w+)'$/, function (feature, callback) {
-        if (CucumberJsBrowserRunnerStepDefinitions[feature]) {
+        if (CucumberJsBrowserRunner.StepDefinitions[feature]) {
             callback();
         } else {
             callback.fail();
