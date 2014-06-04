@@ -1,4 +1,4 @@
-Feature: Test feature 2
+Feature:Test feature 2
 
   Scenario: run test feature 2
     Given test

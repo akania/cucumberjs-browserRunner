@@ -30,10 +30,11 @@ CucumberJsBrowserRunner.StepDefinitions.reportFeature(function () {
     });
 
     Then(/^i can check report summary with '(\w+)' status$/, function(status, callback) {
-        if (this.featureRunner.getReport().getSummary() === status) {
+        var runnerStatus = this.featureRunner.getReport().getSummary();
+        if (runnerStatus === status) {
             callback();
         } else {
-            callback.fail();
+            callback.fail('Runner status is ' + runnerStatus + ' , it should be ' + status);
         }
     });
 

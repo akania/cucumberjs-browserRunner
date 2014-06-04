@@ -39,7 +39,7 @@ CucumberJsBrowserRunner.StepDefinitions.runFeatures(function () {
     });
 
     And(/^step definition file is loaded for feature '(\w+)'$/, function (feature, callback) {
-        if (CucumberJsBrowserRunner.StepDefinitions[feature]) {
+        if (this.runner.getFeatureStepDefinitions(feature)) {
             callback();
         } else {
             callback.fail();
@@ -59,7 +59,8 @@ CucumberJsBrowserRunner.StepDefinitions.runFeatures(function () {
     });
 
     And(/^I Can verify that only second has passed$/, function (callback) {
-        if (!myrunner.getReport().getFeature('Test feature 1') &&
+
+        if (!myrunner.getReport().getFeature('test1') &&
             myrunner.getReport().getFeature('Test feature 2').getSummary() === "passed") {
             callback();
         } else {

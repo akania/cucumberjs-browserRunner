@@ -20,3 +20,10 @@ Feature: Generating report
     When I load a feature 'failingFeature'
     And I run feature 'failingFeature'
     Then i can check that feature with name 'Test failing feature' failed
+
+  Scenario: run feature and get different report summaries at different stages of the test
+    Given a web page
+    When I load a feature 'slowFeature'
+    Then i can check report summary with 'pending' status
+    And I run feature 'slowFeature'
+    Then i can check report summary with 'passed' status
