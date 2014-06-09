@@ -11,6 +11,7 @@
         <script type="text/javascript" src="../lib/runner.js"></script>
         <script type="text/javascript" src="../lib/listeners/report.js"></script>
         <script type="text/javascript" src="../lib/listeners/html.js"></script>
+        <script type="text/javascript" src="../lib/listeners/htmlReport.js"></script>
         <script type="text/javascript" src="../lib/listeners/console.js"></script>
     </head>
     <body>
@@ -24,11 +25,16 @@
         </div>
 
 
+        <h2>Cucumber JS HTML</h2>
+            <div id="cucumberjs-htmlreport" class="cucjs-html"></div>
+        </div>
+
+
         <script>
         var globalRunner = new CucumberJsBrowserRunner({
             timeout : 10000
         });
-        //globalRunner.loadFeatures(['test1'], function () {
+        //globalRunner.loadFeatures(['test2'], function () {
         //globalRunner.loadFeatures(['loadFeature'], function () {
         //globalRunner.loadFeatures(['reportFeature'], function () {
         //globalRunner.loadFeatures(['runFeatures'], function () {

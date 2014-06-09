@@ -120,3 +120,28 @@ html, body {
 #cucumber-templates {
   display: none;
 }
+
+
+/* cucjs-html */
+.cucjs-html { font-family: Consolas;}
+
+.cucjs-html h1 { font-size: 15px; font-weight: bold; padding: 0; margin: 0;}
+.cucjs-html h2 { font-size: 13px; font-weight: bold; padding: 0; margin: 0;}
+.cucjs-html h3 { font-size: 12px; padding: 0; margin: 0;}
+
+.cucjs-html ul {list-style-type: none; margin: 5px 0;}
+.cucjs-html ul li {padding: 0; margin: 0;}
+
+.cucjs-html .details table {font-size : 11px; margin-left: 15px;}
+.cucjs-html .details table tr th { border-bottom: 1px solid #000;}
+
+.cucjs-html .scenariosList > li {
+  margin-bottom : 8px;
+}
+.cucjs-html .stepsList > li {
+  margin-bottom : 2px;
+}
+.cucjs-html .passed { color: green; }
+.cucjs-html .failed { color: red; }
+.cucjs-html .skipped{ color: blue; }
+.cucjs-html .pending{ color: yellow; }

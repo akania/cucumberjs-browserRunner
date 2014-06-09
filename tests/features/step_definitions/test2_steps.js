@@ -12,4 +12,9 @@ CucumberJsBrowserRunner.StepDefinitions.test2(function () {
     Then(/^test$/, function(callback) {
         callback();
     });
+
+    Given(/^the following users exist$/, function (data, callback) {
+        console.log('data', data);
+        callback();
+    }); 
 });

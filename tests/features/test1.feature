@@ -1,7 +1,7 @@
 Feature:Test feature 1
 
   Scenario: run test feature 1
-    Given test
+    Given test2
     When test
     Then test
 
