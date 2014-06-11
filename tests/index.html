@@ -18,16 +18,8 @@
 
 
         <h2>Cucumber JS Browser Runner</h2>
-            <div id="output" class="cucumber-report"></div>
-            <div id="errors-container">
-            <h3>Errors</h3>
-            <pre id="errors"></pre>
-        </div>
-
-
-        <h2>Cucumber JS HTML</h2>
-            <div id="cucumberjs-htmlreport" class="cucjs-html"></div>
-        </div>
+        <h3 class="runAllFeatures" onclick="location.href = location.protocol+'//'+location.host+location.pathname">Run all</h3>
+        <div id="cucumberjs-htmlreport" class="cucjs-html"></div>
 
 
         <script>
@@ -42,6 +34,7 @@
         //globalRunner.loadFeatures(['loadFeature', 'runFeatures', 'reportFeature', 'tags'], function () {
         globalRunner.loadFeatures(['loadFeature', 'runFeatures', 'reportFeature', 'tags'], function () {
             globalRunner.run({
+                tags : [],
                 callback : function () {
                     console.log('summary', globalRunner.getReport().getSummary());
                 }
@@ -49,5 +42,15 @@
             console.log('loaded', globalRunner.getReport().getSummary());
         });
         </script>
+
+
+<!-- 
+        <h2>Cucumber JS Browser Runner</h2>
+            <div id="output" class="cucumber-report"></div>
+            <div id="errors-container">
+            <h3>Errors</h3>
+            <pre id="errors"></pre>
+        </div>
+-->
     </body>
 </html>

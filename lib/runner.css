@@ -123,23 +123,61 @@ html, body {
 
 
 /* cucjs-html */
+
+.runAllFeatures {
+  font-size : 14px; cursor: pointer;
+}
 .cucjs-html { font-family: Consolas;}
+.cucjs-html .hidden { visibility: hidden;}
+.cucjs-html .visible { visibility: visible;}
+
+.cucjs-html .tags {
+  padding : 0; margin :0; color :#686868; font-size: 13px;
+}
+.cucjs-html .tags span {
+  margin-right: 5px;
+  cursor: pointer;
+}
+.cucjs-html .description {
+  padding : 0; margin :0 0 0 72px; color :#686868; font-size: 13px;
+}
 
 .cucjs-html h1 { font-size: 15px; font-weight: bold; padding: 0; margin: 0;}
-.cucjs-html h2 { font-size: 13px; font-weight: bold; padding: 0; margin: 0;}
+.cucjs-html h2 { font-size: 14px; font-weight: bold; padding: 0; margin: 0;}
 .cucjs-html h3 { font-size: 12px; padding: 0; margin: 0;}
 
-.cucjs-html ul {list-style-type: none; margin: 5px 0;}
+.cucjs-html ul {list-style-type: none; margin: 5px 0; padding-left: 72px;}
 .cucjs-html ul li {padding: 0; margin: 0;}
 
 .cucjs-html .details table {font-size : 11px; margin-left: 15px;}
 .cucjs-html .details table tr th { border-bottom: 1px solid #000;}
-
-.cucjs-html .scenariosList > li {
-  margin-bottom : 8px;
+.cucjs-html .errorDetails {
+  background: #FFCCFF;
+  font-size: 12px;
+  white-space: pre;
 }
+
+.cucjs-html .scenariosList .scenarioDetails {
+  display: none;
+}
+.cucjs-html .scenariosList > li.collapsed {
+  margin-bottom : 8px;
+  overflow: hidden;
+}
+.cucjs-html .scenariosList > li.expanded {
+  height : auto;
+}
+
+
+.cucjs-html .detail {
+  color: #686868;
+  font-size: 11px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
 .cucjs-html .stepsList > li {
-  margin-bottom : 2px;
+  margin-bottom : 4px;
 }
 .cucjs-html .passed { color: green; }
 .cucjs-html .failed { color: red; }

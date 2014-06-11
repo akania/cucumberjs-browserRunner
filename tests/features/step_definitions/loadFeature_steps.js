@@ -27,7 +27,7 @@ CucumberJsBrowserRunner.StepDefinitions.loadFeature(function () {
         var testRunner = this.runner;
         this.aboutToLoad = feature;
         testRunner.loadFeatures(feature, function (runner) {
-            featureCode[feature] = feature;
+            featureCode[feature] = testRunner.getFeature(feature);
             callback();
         });
     });
@@ -44,9 +44,9 @@ CucumberJsBrowserRunner.StepDefinitions.loadFeature(function () {
 
     Then(/^i can verify that definition for feature '(\w+)' contains '(.*)'$/, function(featureName, featureCodeFragment, callback) {
         if (featureCode[featureName].indexOf(featureCodeFragment) > -1 ) {
-            callback.fail('Feature ' + featureName + ' ,definition ' + featureCode[featureName] + ' doesnt contain ' + featureCodeFragment);
-        } else {
             callback();
+        } else {
+            callback.fail();
         }
     });
     

@@ -6,6 +6,17 @@ CucumberJsBrowserRunner.StepDefinitions.test2(function () {
     Given(/^test$/, function(callback) {
         callback();
     });
+
+
+
+    Given(/^test1$/, function(callback) {
+        callback();
+    });
+    Given(/^test2$/, function(callback) {
+        callback();
+    });
+
+
     When(/^test$/, function(callback) {
         callback();
     });

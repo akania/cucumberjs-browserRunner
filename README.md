@@ -18,10 +18,14 @@ a tests written in [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin)
 - runner is able to run one/multiple features
 - runner supports (configurable) timeouts after which step will automatically fail
 
+#### New UI
+- list all features, scenarios, steps, tags, data tables and more... WIP
+- allow to run selected features, scenarios based on name or tag
+
 ### TODO
 - step definitions can be reused by multiple features
 - expose api for using different kind of formatters ( JSON, Summary, Pretty...)
-- better visual feedback
+- better visual feedback WIP
 - ... 
 
 ### How to use
