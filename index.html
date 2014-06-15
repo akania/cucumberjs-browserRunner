@@ -4,40 +4,128 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Cucumber.js browser runner</title>
-    <link href="runner.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/cucumber.js"></script>
-    <script type="text/javascript" src="vendor/jquery-1.9.1.min.js"></script>
+    <link href="../lib/runner.css" rel="stylesheet" type="text/css"/>
+        
+    <script type="text/javascript" src="lib/vendor/jquery-1.9.1.min.js"></script>
 
-    <script type="text/javascript" src="/runner.js"></script>
+    <script type="text/javascript" src="lib/runner.js"></script>
+    <script type="text/javascript" src="lib/listeners/report.js"></script>
+    <script type="text/javascript" src="lib/listeners/html.js"></script>
+    <script type="text/javascript" src="lib/listeners/htmlReport.js"></script>
+    <script type="text/javascript" src="lib/listeners/console.js"></script>
+
+    <script type="text/javascript" src="lib/vendor/cucumber.js"></script>
+    <style type="text/css">
+      body {background : #E8E8E8; font-family: Consolas;}
+      .mainContainer { padding: 30px; margin-bottom: 30px; width: 80%; margin : 0 auto; border: 1px solid #88888; background: #fff;}
+    </style>
   </head>
   <body>
 
-    <h2>Start a HTTP server, go to <a href="tests">tests</a> to see it in action</h2>
-    <h3>Example how to run setup runner</h3>
-    <textarea rows="20" cols="80">
-
-      <html>
-        <head>
-          <meta charset="UTF-8">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-          <title>Cucumber.js browser runner</title>
-          <link href="runner.css" rel="stylesheet" type="text/css"/>
-          <script type="text/javascript" src="/cucumber.js"></script>
-          <script type="text/javascript" src="vendor/jquery-1.9.1.min.js"></script>
-
-          <script type="text/javascript" src="/runner.js"></script>
-          <script>
-              var runner = new CucumberJsBrowserRunner();
-              runner.loadFeatures(['loadFeature', 'runFeatures', 'reportFeature', 'tags'], function () {
-                  runner.run({
-                      callback : function () {
-                          console.log('summary', runner.getReport().getSummary());
-                      }
-                  });
-                  console.log('loaded', runner.getReport().getSummary());
+    <div class="mainContainer">
+      <h2>Cucumber JS Browser Runner</h2>
+      <h3 class="runAllFeatures" onclick="location.href = location.protocol+'//'+location.host+location.pathname">Run all</h3>
+      <div id="cucumberjs-htmlreport" class="cucjs-html">
+        <div class="results">
+            <h2>Results</h2>
+            <h4>Features:</h4>
+              total : <span data-type="featureCount">0</span>
+              passed : <span class="passed" data-type="featuresPassed">0</span>
+              skipped : <span class="skipped" data-type="featureSkipped">0</span>
+              failed : <span class="failed" data-type="featureFailed">0</span>
+              pending : <span class="pending" data-type="featurePending">0</span>
+            <br>
+            <h4>Scenarios:</h4>
+              total : <span data-type="scenarioCount">0</span>
+              passed : <span class="passed" data-type="scenarioPassed">0</span>
+              skipped : <span class="skipped" data-type="scenarioSkipped">0</span>
+              failed : <span class="failed" data-type="scenarioFailed">0</span>
+              pending : <span class="pending" data-type="scenarioPending">0</span>
+            <br>
+            <h4>Steps:</h4>
+              total : <span data-type="stepsCount">0</span>
+              passed : <span class="passed" data-type="stepsPassed">0</span>
+              skipped : <span class="skipped" data-type="stepsSkipped">0</span>
+              failed : <span class="failed" data-type="stepsFailed">0</span>
+              pending : <span class="pending" data-type="stepsPending">0</span>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <br/>
+      <script>
+          var globalRunner = new CucumberJsBrowserRunner({
+              timeout : 10000
+          });
+          globalRunner.loadFeatures([{
+            name : 'demoFeature',
+            backgroundSteps : 'demoFeature'
+          }], function () {
+              globalRunner.run({
+                  tags : [],
+                  callback : function () {
+                      console.log('summary', globalRunner.getReport().getSummary());
+                  }
               });
-          </script>
-          .....
-    </textarea>
+              console.log('loaded', globalRunner.getReport().getSummary());
+          });
+      </script>
+
+
+     <div class="mainContainer">
+      <h2><a href="tests">Tests</a></h2>
+      <h3>Example how to setup runner</h3>
+      <textarea rows="20" cols="120">
+
+        <!doctype html>
+        <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+            <title>Cucumber.js browser runner</title>
+            <link href="../lib/runner.css" rel="stylesheet" type="text/css"/>
+                
+            <script type="text/javascript" src="lib/vendor/jquery-1.9.1.min.js"></script>
+
+            <script type="text/javascript" src="lib/runner.js"></script>
+            <script type="text/javascript" src="lib/listeners/report.js"></script>
+            <script type="text/javascript" src="lib/listeners/html.js"></script>
+            <script type="text/javascript" src="lib/listeners/htmlReport.js"></script>
+            <script type="text/javascript" src="lib/listeners/console.js"></script>
+
+            <script type="text/javascript" src="lib/vendor/cucumber.js"></script>
+            <style type="text/css">
+              body {background : #E8E8E8; font-family: Consolas;}
+              .mainContainer { padding: 30px; margin-bottom: 30px; width: 80%; margin : 0 auto; border: 1px solid #88888; background: #fff;}
+            </style>
+          </head>
+          <body>
+
+            <div class="mainContainer">
+              <h2>Cucumber JS Browser Runner</h2>
+              <h3 class="runAllFeatures" onclick="location.href = location.protocol+'//'+location.host+location.pathname">Run all</h3>
+              <div id="cucumberjs-htmlreport" class="cucjs-html"></div>
+            </div>
+            <br/>
+              <script>
+                  var globalRunner = new CucumberJsBrowserRunner({
+                      timeout : 10000
+                  });
+                  globalRunner.loadFeatures([{
+                    name : 'demoFeature',
+                    backgroundSteps : 'demoFeature'
+                  }], function () {
+                      globalRunner.run({
+                          tags : [],
+                          callback : function () {
+                              console.log('summary', globalRunner.getReport().getSummary());
+                          }
+                      });
+                      console.log('loaded', globalRunner.getReport().getSummary());
+                  });
+              </script>
+            .....
+      </textarea>
+    </div>
   </body>
 </html>

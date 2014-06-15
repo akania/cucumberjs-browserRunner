@@ -2,13 +2,12 @@ CucumberJsBrowserRunner.StepDefinitions.runFeatures(function () {
 
     var And = Given = When = Then = this.defineStep,
         featureName = '',
-        featureCode = {},
+        featuresCode = {},
         runner,
         world = this;
 
     this.Before(function(beforething, callback) {
         this.runner = new CucumberJsBrowserRunner();
-        this.failedToLoadFeature = '';
         callback();
     });
 
@@ -16,52 +15,28 @@ CucumberJsBrowserRunner.StepDefinitions.runFeatures(function () {
         callback();
     });
 
-    When(/^I load a feature '(\w+)'$/, function(feature, callback) {
+    When(/^I load following features '(.*)'$/, function(features, callback) {
+        var featuresArray = features.split(',');
         var testRunner = this.runner;
-        this.aboutToLoad = feature;
-        testRunner.loadFeatures(feature, function (runner) {
-            featureCode[feature] = feature;
+        testRunner.loadFeatures(featuresArray, function (runner) {
+            featuresCode = testRunner.getAllFeatures();
             callback();
         });
-    });
-
-    When(/^I load a feature '(\w+)' and '(\w+)'$/, function(feature1, feature2, callback) {
-        var testRunner = this.runner;
-        testRunner.loadFeatures([feature1, feature2], function (runner) {
-            featureCode[feature1] = testRunner.getFeature(feature1);
-            featureCode[feature2] = testRunner.getFeature(feature1);
-            callback();
-        });
-    });
-
-    Then(/^i can access world instance for this feature$/, function (callback) {
-        callback();
-    });
-
-    And(/^step definition file is loaded for feature '(\w+)'$/, function (feature, callback) {
-        if (this.runner.getFeatureStepDefinitions(feature)) {
-            callback();
-        } else {
-            callback.fail();
-        }
     });
 
     And(/^I run feature '(\w+)'$/, function (feature, callback) {
-        var runner = this.runner;
-        runner.setOutput('console');
-        runner.run({
+        var testRunner = this.runner;
+        testRunner.setOutput('console');
+        testRunner.run({
             features : feature,
-            callback : function () {
-                window.myrunner = runner;
-                callback();
-            }
+            callback : callback
         });
     });
 
     And(/^I Can verify that only second has passed$/, function (callback) {
-
-        if (!myrunner.getReport().getFeature('test1') &&
-            myrunner.getReport().getFeature('Test feature 2').getSummary() === "passed") {
+        var testRunner = this.runner;
+        if (!testRunner.getReport().getFeature('Test feature 1') &&
+            testRunner.getReport().getFeature('Test feature 2').getSummary() === "passed") {
             callback();
         } else {
             callback.fail();

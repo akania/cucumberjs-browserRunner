@@ -2,7 +2,7 @@ CucumberJsBrowserRunner.StepDefinitions.loadFeature(function () {
 
     var And = Given = When = Then = this.defineStep,
         featureName = '',
-        featureCode = {},
+        featuresCode = {},
         runner,
         world = this;
 
@@ -16,61 +16,45 @@ CucumberJsBrowserRunner.StepDefinitions.loadFeature(function () {
         callback();
     });
 
-    When(/^test '(.*)'$/, function (value, callback) {
-        callback();
-    });
-    When(/^i get '(.*)'$/, function (value, callback) {
-        callback();
-    });
 
-    When(/^I load a feature '(\w+)'$/, function(feature, callback) {
+    When(/^I load following features '(.*)'$/, function(features, callback) {
+        var featuresArray = features.split(',');
         var testRunner = this.runner;
-        this.aboutToLoad = feature;
-        testRunner.loadFeatures(feature, function (runner) {
-            featureCode[feature] = testRunner.getFeature(feature);
+        testRunner.loadFeatures(featuresArray, function (runner) {
+            featuresCode = testRunner.getAllFeatures();
             callback();
         });
     });
 
-    
-    When(/^I load a feature '(\w+)' and '(\w+)'$/, function(feature1, feature2, callback) {
+    When(/^I load following feature '(.*)' with '(.*)' background defined$/, function(featureName, backgroundName, callback) {
         var testRunner = this.runner;
-        testRunner.loadFeatures([feature1, feature2], function (runner) {
-            featureCode[feature1] = testRunner.getFeature(feature1);
-            featureCode[feature2] = testRunner.getFeature(feature2);
+        testRunner.loadFeatures({
+            name : featureName, 
+            backgroundSteps : [backgroundName]
+        }, function (runner) {
+            featuresCode = testRunner.getAllFeatures();
             callback();
         });
     });
 
-    Then(/^i can verify that definition for feature '(\w+)' contains '(.*)'$/, function(featureName, featureCodeFragment, callback) {
-        if (featureCode[featureName].indexOf(featureCodeFragment) > -1 ) {
-            callback();
-        } else {
-            callback.fail();
-        }
-    });
-    
-
-    Then(/^I fail the test$/, function(callback) {
-        callback.fail();
-    });
-
-
-
-    Then(/^i can access world instance for this feature$/, function (callback) {
-        callback();
-    });
-
-    Then(/^i can see in report that feature test '(\w+)'$/, function (status, callback) {
-        if (status === this.runner.getReport().features[0].status) {
+    Then(/^I can verify that definition for feature '(\w+)' contains '(.*)'$/, function(featureName, featureCodeFragment, callback) {
+        if (featuresCode[featureName].source.indexOf(featureCodeFragment) > -1 ) {
             callback();
         } else {
             callback.fail();
         }
     });
 
-    Then(/^i can check results for all tests$/, function (callback) {
-        if(this.runner.getReport()) {
+    And(/^Step definition file is loaded for feature '(\w+)'$/, function (feature, callback) {
+        if (this.runner.getFeatureStepDefinitions(feature)) {
+            callback();
+        } else {
+            callback.fail();
+        }
+    });
+
+    And(/^Background step definition file is loaded for background '(\w+)'$/, function (feature, callback) {
+        if (this.runner.getFeatureBackgroundStepDefinitions(feature)) {
             callback();
         } else {
             callback.fail();
@@ -95,55 +79,9 @@ CucumberJsBrowserRunner.StepDefinitions.loadFeature(function () {
         }
     });
 
-    And(/^step definition file is loaded for feature '(\w+)'$/, function (feature, callback) {
-        if (this.runner.getFeatureStepDefinitions(feature)) {
-            callback();
-        } else {
-            callback.fail();
-        }
-    });
-
-    And(/^I run feature '(\w+)'$/, function (feature, callback) {
-        this.runner.setOutput('console');
-        this.runner.run({
-            featureName : feature,
-            customListeners : {
-              StepResult : function (stepResult) {
-                  if (stepResult.getStep().getName() === 'c' && stepResult.isSuccessful()) {
-                      callback();
-                  }
-              }
-            },
-            callback : callback
-        });
-        if (feature === 'testWorld') {
-            callback();
-        }
-    });
-
-    And(/^I run all features$/, function (callback) {
-        this.runner.setOutput('console');
-        this.runner.run({callback : callback});
-    });
-
-    When(/^I try to load a features '(.*)'$/, function (features, callback) {
-        
-        this.runner.loadFeatures(features.split(','), function (features) {
-            featureCode[features] = features;
-            callback();
-        });
-
-    });
-
-    Then(/^An error callback is called while loading feature$/, function (callback) {
-        if (this.failedToLoadFeature) {
-              callback();
-          } else {
-              callback.fail();
-          }
-    });
-    And(/^Test summary is '(\w+)'$/, function (status, callback) {
-        if (this.runner.getReport().getSummary() === status) {
+    Then(/^I get the information that for '(\w+)' feature background step definition was not loaded$/, function (feature, callback) {
+        if (this.runner.getReport().getFeature(feature).status === 'failed' &&
+            this.runner.getReport().getFeature(feature).message === 'Unable to load a background step definition for feature ' + feature) {
             callback();
         } else {
             callback.fail();

@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Cucumber.js browser runner tests</title>
         <link href="../lib/runner.css" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript" src="../lib/vendor/cucumber.js"></script>
+        
         <script type="text/javascript" src="../lib/vendor/jquery-1.9.1.min.js"></script>
 
         <script type="text/javascript" src="../lib/runner.js"></script>
@@ -13,20 +13,51 @@
         <script type="text/javascript" src="../lib/listeners/html.js"></script>
         <script type="text/javascript" src="../lib/listeners/htmlReport.js"></script>
         <script type="text/javascript" src="../lib/listeners/console.js"></script>
+
+        <script type="text/javascript" src="../lib/vendor/cucumber.js"></script>
     </head>
     <body>
 
 
         <h2>Cucumber JS Browser Runner</h2>
         <h3 class="runAllFeatures" onclick="location.href = location.protocol+'//'+location.host+location.pathname">Run all</h3>
-        <div id="cucumberjs-htmlreport" class="cucjs-html"></div>
+        <div id="cucumberjs-htmlreport" class="cucjs-html">
+            <div class="results">
+                <h2>Results</h2>
+                <h4>Features:</h4>
+                  total : <span data-type="featureCount">0</span>
+                  passed : <span class="passed" data-type="featuresPassed">0</span>
+                  skipped : <span class="skipped" data-type="featureSkipped">0</span>
+                  failed : <span class="failed" data-type="featureFailed">0</span>
+                  pending : <span class="pending" data-type="featurePending">0</span>
+                <br>
+                <h4>Scenarios:</h4>
+                  total : <span data-type="scenarioCount">0</span>
+                  passed : <span class="passed" data-type="scenarioPassed">0</span>
+                  skipped : <span class="skipped" data-type="scenarioSkipped">0</span>
+                  failed : <span class="failed" data-type="scenarioFailed">0</span>
+                  pending : <span class="pending" data-type="scenarioPending">0</span>
+                <br>
+                <h4>Steps:</h4>
+                  total : <span data-type="stepsCount">0</span>
+                  passed : <span class="passed" data-type="stepsPassed">0</span>
+                  skipped : <span class="skipped" data-type="stepsSkipped">0</span>
+                  failed : <span class="failed" data-type="stepsFailed">0</span>
+                  pending : <span class="pending" data-type="stepsPending">0</span>
+            </div>
+        </div>
 
 
         <script>
         var globalRunner = new CucumberJsBrowserRunner({
             timeout : 10000
         });
+        //globalRunner.loadFeatures(['outline'], function () {
         //globalRunner.loadFeatures(['test2'], function () {
+        //globalRunner.loadFeatures([{
+        //    name : 'backgroundSteps', 
+        //    backgroundSteps : ['common']
+        //}], function () {
         //globalRunner.loadFeatures(['loadFeature'], function () {
         //globalRunner.loadFeatures(['reportFeature'], function () {
         //globalRunner.loadFeatures(['runFeatures'], function () {
