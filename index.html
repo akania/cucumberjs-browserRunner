@@ -55,7 +55,7 @@
     <br/>
       <script>
           var globalRunner = new CucumberJsBrowserRunner({
-              timeout : 10000
+              timeout : 5000
           });
           globalRunner.loadFeatures([{
             name : 'demoFeature',
@@ -70,7 +70,11 @@
               console.log('loaded', globalRunner.getReport().getSummary());
           });
       </script>
-
+    <div class="mainContainer">
+      <h3><a href="https://github.com/akania/cucumberjs-browserRunner">Github project</a></h3>  
+    </div>
+    <br/>
+    <br/>
 
      <div class="mainContainer">
       <h2><a href="tests">Tests</a></h2>

@@ -11,6 +11,16 @@ CucumberJsBrowserRunner.StepDefinitions.demoFeature(function () {
 
   var Given = When = Then = And = this.defineStep;
 
+  this.Before(function (callback) {
+      console.log('Before every Scenario');
+      callback();
+  });
+
+  this.After(function (callback) {
+      console.log('After every Scenario');
+      callback();
+  });
+
   Given(/^I have a simple scenario$/, function (callback) {
       callback();
   });
@@ -53,7 +63,7 @@ CucumberJsBrowserRunner.StepDefinitions.demoFeature(function () {
   });
   When(/^I can read it in the step definition$/, function (callback) {
       this.dataTable.getRows().forEach(function(row){
-        console.log(row.raw())
+          console.log(row.raw())
       });
 
       if (this.dataTable.raw()[0][0] === "first" &&
