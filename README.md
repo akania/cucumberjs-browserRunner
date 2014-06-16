@@ -17,9 +17,9 @@ a tests written in [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin)
 - supports [tags](https://github.com/cucumber/cucumber-tck/blob/master/tags.feature) 
 - supports [background steps](https://github.com/cucumber/cucumber/wiki/Background) 
 - supports [scenario outlines](https://github.com/cucumber/cucumber/wiki/Scenario-Outlines) 
-- supports [data tables]https://github.com/cucumber/cucumber-tck/blob/master/data_tables.feature
-- supports [hooks]https://github.com/cucumber/cucumber-tck/blob/master/hooks.feature
-- supports [world]https://github.com/cucumber/cucumber-tck/blob/master/world.feature
+- supports [data tables](https://github.com/cucumber/cucumber-tck/blob/master/data_tables.feature
+- supports [hooks](https://github.com/cucumber/cucumber-tck/blob/master/hooks.feature
+- supports [world](https://github.com/cucumber/cucumber-tck/blob/master/world.feature
 - runner is able to run one/multiple features
 - runner supports (configurable) timeouts after which step will automatically fail [issue](https://github.com/cucumber/cucumber-js/pull/192)
 - runner supports tags in scenario outlines [issue](https://github.com/cucumber/cucumber-js/pull/196)
