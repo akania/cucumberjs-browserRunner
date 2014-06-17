@@ -9,9 +9,14 @@ html, body {
 .runAllFeatures {
   font-size : 14px; cursor: pointer;
 }
+.fRight {float: right;}
+.fLeft {float: left;}
 .cucjs-html { font-family: Consolas;}
 .cucjs-html .hidden { visibility: hidden;}
 .cucjs-html .visible { visibility: visible;}
+
+.cucjs-html .displayNone { display: none;}
+.cucjs-html .displayInline { display: inline;}
 
 .cucjs-html .background {
   margin-left: 70px;
@@ -30,6 +35,10 @@ html, body {
 .cucjs-html .description {
   padding : 0; margin :0 0 0 72px; color :#686868; font-size: 13px;
 }
+
+.fontSmall {font-size: 12px;}
+.fontMedium {font-size: 13px;}
+.fontBid {font-size: 14px;}
 
 .cucjs-html h1 { font-size: 15px; font-weight: bold; padding: 0; margin: 0;}
 .cucjs-html h2 { font-size: 14px; font-weight: bold; padding: 0; margin: 0;}
@@ -50,9 +59,6 @@ html, body {
   white-space: pre;
 }
 
-.cucjs-html .scenariosList .scenarioDetails {
-  display: none;
-}
 .cucjs-html .scenariosList > li.collapsed {
   margin-bottom : 8px;
   overflow: hidden;
@@ -60,7 +66,6 @@ html, body {
 .cucjs-html .scenariosList > li.expanded {
   height : auto;
 }
-
 
 .cucjs-html .detail {
   color: #686868;
@@ -75,6 +80,6 @@ html, body {
 .cucjs-html .passed { color: green; }
 .cucjs-html .failed { color: red; }
 .cucjs-html .skipped{ color: blue; }
-.cucjs-html .pending{ color: yellow; }
+.cucjs-html .pending{ color: orange; }
 
 #results h3,h4 { padding: 0; margin: 0;}

@@ -22,7 +22,7 @@ a tests written in [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin)
 - supports [world](https://github.com/cucumber/cucumber-tck/blob/master/world.feature)
 - runner is able to run one/multiple features
 - runner supports (configurable) timeouts after which step will automatically fail [issue](https://github.com/cucumber/cucumber-js/pull/192)
-- runner supports tags in scenario outlines [issue](https://github.com/cucumber/cucumber-js/pull/196)
+- runner supports tags in scenario outlines [issue](https://github.com/cucumber/cucumber-js/pull/197)
 
 #### Runner HTML UI
 - list all features, scenarios, steps, tags, data tables and more...

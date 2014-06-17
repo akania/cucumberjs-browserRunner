@@ -16,6 +16,11 @@ CucumberJsBrowserRunner.StepDefinitions.demoFeature(function () {
       callback();
   });
 
+  this.Before('@outline', function (callback) {
+      console.log('Only before every scenario with @outline tag');
+      callback();
+  });
+
   this.After(function (callback) {
       console.log('After every Scenario');
       callback();
@@ -35,7 +40,7 @@ CucumberJsBrowserRunner.StepDefinitions.demoFeature(function () {
       setTimeout(function () {
         world.property++;
         callback();
-      }, 500);
+      }, 100);
   });
 
   Then(/^I can verify the results$/, function (callback) {
@@ -89,6 +94,21 @@ CucumberJsBrowserRunner.StepDefinitions.demoFeature(function () {
       } else {
           callback.fail();    
       }
+  });
+
+  /* error handling */
+  When('I perform some action that throws an error', function (callback) {
+    this.throwException();
+    callback();
+  });
+
+  Then('Test continues', function (callback) {
+    callback();
+  });
+
+  /* Timeout */
+  When('My step will trigger timeout', function (callback) {
+
   });
 
 });
