@@ -14,4 +14,8 @@ CucumberJsBrowserRunner.WorldDefinitions.demoWorld(function () {
             callback();
         }, 500);
     };
+
+    self.throwException = function () {
+        nonExistingFunction();
+    };
 });

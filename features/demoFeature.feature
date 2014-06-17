@@ -53,7 +53,7 @@ Feature: Demo feature
             | 3      | d      |      |
         Then I can read it in the step definition
 
-    @outline @world @async
+    @outline1
     Scenario Outline: Scenario outline - run this scenario with different examples
                       To run one scenario with different set of values use scenario outlines
 
@@ -65,3 +65,36 @@ Feature: Demo feature
     | value | subsctractValue | resultValue |
     |  12   |  5              |  7          |
     |  5   |  5              |  0          |
+    |  15   |  5              |  10          |
+
+    @outline2
+    Scenario Outline: Scenario outline - another outline scenario with different tag
+                      To run one scenario with different set of values use scenario outlines
+
+        Given There is initial <value>
+        When I subsctract <subsctractValue>
+        Then I should have <resultValue>
+    
+    Examples:
+    | value | subsctractValue | resultValue |
+    |  12   |  5              |  7          |
+    |  5   |  5              |  0          |
+
+    @errorHandling
+    Scenario: Simple scenario with error
+        Simple scenario, When step triggers error
+
+        Given I have a simple scenario
+        When I perform some action that throws an error
+        Then Tests continues
+
+    @timeout
+    Scenario: Simple scenario with timeout
+        Simple scenario, When step takes longer than value of a timeout set by 
+        var globalRunner = new CucumberJsBrowserRunner({
+              timeout : 500
+        });
+
+        Given I have a simple scenario
+        When My step will trigger timeout
+        Then I will see it in the runner
