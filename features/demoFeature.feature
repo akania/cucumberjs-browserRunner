@@ -1,6 +1,6 @@
 Feature: Demo feature
     In order follow ATDD
-    As a developer i would like to be able to write specs using Gherkin syntax and execute them using browser runner
+    As a developer i would like to be able to write specs using Gherkin language and execute them using cucumber.js library in the browser
     So i'm able to test my application in various browsers and environments
 
     Background: Every scenario may have a common background
