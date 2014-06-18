@@ -9,8 +9,10 @@ a tests written in [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin)
 
 ### Features
 
-- load feature files
-- load step definition for every feature file automatically
+- loads feature file(s)
+- loads step definition for every feature
+- loads background step(s) for a feature
+- loads world defition via helper method in step
 - execute tests using cucumber-js library
 - report missing feature files and missing world, step & background definition files ( console )
 - build-in reporters ( HTML , console )
@@ -25,6 +27,7 @@ a tests written in [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin)
 - runner is able to run one/multiple features
 - runner supports (configurable) timeouts after which step will automatically fail [issue](https://github.com/cucumber/cucumber-js/pull/192)
 - runner supports tags in scenario outlines [issue](https://github.com/cucumber/cucumber-js/pull/197)
+- step callback can be called only once  [issue](https://github.com/cucumber/cucumber-js/pull/199)
 
 #### Runner HTML UI
 - list all features, scenarios, steps, tags, data tables and more...

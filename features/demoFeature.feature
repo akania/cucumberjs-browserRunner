@@ -9,7 +9,7 @@ Feature: Demo feature
         Given This page is loaded
         And We have defined state of our application
 
-    @basic @world
+    @basic @world @demoFeatureBackground
     Scenario: Simple synchronous scenario
         Simple synchronous scenario based on 3 steps
 
