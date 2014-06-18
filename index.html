@@ -64,6 +64,9 @@
           globalRunner.loadFeatures([{
             name : 'demoFeature',
             backgroundSteps : 'demoFeature'
+          },{
+            name : 'second',
+            backgroundSteps : ['demoFeature', 'secondBackground']
           }], function () {
               globalRunner.run({
                   tags : [],
