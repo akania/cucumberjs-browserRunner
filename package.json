@@ -1,0 +1,26 @@
+﻿{
+  "name": "cucumberjs-browserRunner",  "version": "0.0.0",  "description": "Browser runner for [cucumber.js  library](https://github.com/cucumber/cucumber-js)\r This runner is a wrapper around [cucumber.js](https://github.com/cucumber/cucumber-js) library which is responsible for running\r a tests written in [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin)",
+  "main": "bundle.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/akania/cucumberjs-browserRunner.git"
+  },
+  "author": "Artur Kania",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akania/cucumberjs-browserRunner/issues"
+  },
+  "homepage": "https://github.com/akania/cucumberjs-browserRunner",
+  "devDependencies": {
+    "node-minify": "^0.10.5",
+    "uglify-js": "^2.4.15",
+    "uglifyjs": "^2.3.6"
+  }
+}
+
