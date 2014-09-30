@@ -1,0 +1,33 @@
+Diff with Cucumber js lib:
+
+# Added timeout for step https://github.com/cucumber/cucumber-js/pull/192
+# Call callback only once https://github.com/cucumber/cucumber-js/pull/199
+
+-----
+invoke: function invoke(step, world, scenario, callback) {
+
+    +var timeoutValue = Cucumber.Runtime.stepTimeoutValue,
+        +timeoutRef;
+    
+    ...var cleanUp = function cleanUp() {...
+
+    +timeoutRef = setTimeout(function () {
+        +codeCallback.fail('Timeout');
+    +}, timeoutValue);
+    ...
+
+    ...var codeCallback = function (error) {
+        +if (codeCallback.wasCalled) {
+          +console.error('Callback was already called for this step : ', step.getName());
+          +return;
+        +}
+        +codeCallback.wasCalled = true;
+        +clearTimeout(timeoutRef);
+        ...
+
+    ...codeCallback.pending = function pending(reason) {
+        +clearTimeout(timeoutRef);
+
+    ...codeCallback.fail = function fail(failureReason) {
+        +clearTimeout(timeoutRef);
+
