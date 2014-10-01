@@ -1,6 +1,6 @@
 {
   "name": "cucumberjs-browserRunner",
-  "version": "0.3",
+  "version": "0.3.2",
   "description": "Browser runner for [cucumber.js  library](https://github.com/cucumber/cucumber-js)\r This runner is a wrapper around [cucumber.js](https://github.com/cucumber/cucumber-js) library which is responsible for running\r a tests written in [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin)",
   "main": "grunt",
   "directories": {
