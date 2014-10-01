@@ -1,15 +1,8 @@
 CucumberJsBrowserRunner.StepDefinitions.slowFeature(function () {
 
-    var And = Given = When = Then = this.defineStep,
-        runner;
+    var Step = this.defineStep;
 
-    Given(/^test$/, function(callback) {
-        setTimeout(callback, 500);
-    });
-    When(/^test$/, function(callback) {
-        setTimeout(callback, 500);
-    });
-    Then(/^test$/, function(callback) {
+    Step(/^slow test$/, function(callback) {
         setTimeout(callback, 500);
     });
 });

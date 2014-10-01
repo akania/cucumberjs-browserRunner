@@ -4,7 +4,17 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Cucumber.js browser runner tests</title>
+        <!--
+        <script type="text/javascript" src="../lib/vendor/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="../lib/runner.js"></script>
+        <script type="text/javascript" src="../lib/listeners/report.js"></script>
+        <script type="text/javascript" src="../lib/listeners/html.js"></script>
+        <script type="text/javascript" src="../lib/listeners/htmlReport.js"></script>
+        <script type="text/javascript" src="../lib/listeners/console.js"></script>
+        <script type="text/javascript" src="../lib/vendor/cucumber.js"></script>
+        -->
         <script type="text/javascript" src="../lib/runner.min.js"></script>
+        
         <link href="../lib/runner.css" rel="stylesheet" type="text/css"/>
 
     </head>
@@ -59,7 +69,7 @@
         //globalRunner.loadFeatures(['runFeatures'], function () {
         //globalRunner.loadFeatures(['tags'], function () {
         //globalRunner.loadFeatures(['loadFeature', 'runFeatures', 'reportFeature', 'tags'], function () {
-        globalRunner.loadFeatures(['loadFeature', 'runFeatures', 'reportFeature', 'tags'], function () {
+        globalRunner.loadFeatures(['outline', 'loadFeature', 'runFeatures', 'reportFeature', 'tags'], function () {
             globalRunner.run({
                 tags : [],
                 callback : function () {

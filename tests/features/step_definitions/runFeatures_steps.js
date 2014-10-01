@@ -26,7 +26,6 @@ CucumberJsBrowserRunner.StepDefinitions.runFeatures(function () {
 
     And(/^I run feature '(\w+)'$/, function (feature, callback) {
         var testRunner = this.runner;
-        testRunner.setOutput('console');
         testRunner.run({
             features : feature,
             callback : callback
@@ -44,7 +43,6 @@ CucumberJsBrowserRunner.StepDefinitions.runFeatures(function () {
     });
 
     Then(/^I can run all features$/, function (callback) {
-        this.runner.setOutput('console');
         this.runner.run({callback : callback});
     });
 

@@ -27,7 +27,6 @@ CucumberJsBrowserRunner.StepDefinitions.tags(function () {
 
     And(/^I run all tests tagged with '(@\w+)'$/, function (tag, callback) {
         var testRunner = this.runner;
-        testRunner.setOutput('console');
         testRunner.run({
             tags : [tag],
             callback : callback
