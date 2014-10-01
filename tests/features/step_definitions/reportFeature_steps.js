@@ -22,10 +22,11 @@ CucumberJsBrowserRunner.StepDefinitions.reportFeature(function () {
     });
 
     And(/^I run feature '(\w+)'$/, function (feature, callback) {
-        this.featureRunner.setOutput('console');
         this.featureRunner.run({
             featureName : feature,
-            callback :  callback
+            callback :  function () {
+                callback();
+            }
         });
     });
 
@@ -39,7 +40,7 @@ CucumberJsBrowserRunner.StepDefinitions.reportFeature(function () {
     });
 
     Then(/^i can check that feature with name '(.*)' failed$/, function(featureName, callback) {
-        if (this.featureRunner.getReport().getFailed()[0].name === featureName) {
+        if (this.featureRunner.getReport().getFailedFeatures()[0].name === featureName) {
             callback();
         } else {
             callback.fail();
